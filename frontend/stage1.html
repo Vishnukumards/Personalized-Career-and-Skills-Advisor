@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stage 1 - Career Journey</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+        --primary: #4361ee;
+        --secondary: #7209b7;
+        --accent: #f72585;
+        --text: #2b2d42;
+        --text-light: #6c757d;
+        --gradient: linear-gradient(135deg, #4361ee 0%, #7209b7 100%);
+        --card-bg: #ffffff;
+        --transition: all 0.3s ease;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Inter', sans-serif;
+        color: var(--text);
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    .container {
+        background: var(--card-bg);
+        border-radius: 20px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 650px;
+        overflow: hidden;
+    }
+    .header {
+        background: var(--gradient);
+        color: white;
+        padding: 28px 30px;
+        text-align: center;
+    }
+    .header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+    }
+    .progress-container {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        height: 10px;
+        margin: 12px 0;
+        overflow: hidden;
+    }
+    .progress-bar {
+        height: 100%;
+        width: 20%;
+        background: var(--accent);
+        border-radius: 10px;
+        transition: width 0.5s ease;
+    }
+    .question-count {
+        font-size: 0.9rem;
+        opacity: 0.9;
+    }
+    .question-container { padding: 32px; }
+    .question {
+        font-size: 1.3rem;
+        color: var(--primary);
+        margin-bottom: 28px;
+        font-weight: 600;
+        line-height: 1.5;
+    }
+    .options {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .option {
+        display: flex;
+        align-items: center;
+        padding: 16px;
+        border: 2px solid #eef2ff;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: var(--transition);
+        background-color: #fdfdff;
+    }
+    .option:hover { border-color: var(--primary); }
+    .option.selected {
+        border-color: var(--primary);
+        background-color: #f0f3ff;
+    }
+    .option input { display: none; }
+    .option-letter {
+        width: 28px;
+        height: 28px;
+        border: 2px solid #dcdfe4;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: var(--text-light);
+        margin-right: 16px;
+        transition: var(--transition);
+    }
+    .option.selected .option-letter {
+        background-color: var(--primary);
+        border-color: var(--primary);
+        color: white;
+    }
+    .option label {
+        font-size: 1rem;
+        color: var(--text);
+        cursor: pointer;
+        flex: 1;
+    }
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 32px;
+    }
+    .btn {
+        padding: 12px 28px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    .btn-secondary {
+        background-color: #e4e8f0;
+        color: var(--text);
+    }
+    .btn-secondary:hover { background-color: #d1d9e6; }
+    .btn-primary {
+        background: var(--gradient);
+        color: white;
+    }
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Career Preference Assessment</h1>
+      <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <div class="question-count" id="question-count">Question 1 of 5</div>
+    </div>
+    <div class="question-container">
+      <div id="question-1">
+        <h2 class="question">What type of problems do you enjoy solving most?</h2>
+        <div class="options">
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q1"><span class="option-letter">A</span><label>Building and creating things from scratch</label></div>
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q1"><span class="option-letter">B</span><label>Analyzing data and finding patterns</label></div>
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q1"><span class="option-letter">C</span><label>Designing user-friendly experiences</label></div>
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q1"><span class="option-letter">D</span><label>Managing teams and projects</label></div>
+        </div>
+      </div>
+      <div id="question-2" class="hidden">
+        <h2 class="question">Which work environment do you prefer?</h2>
+        <div class="options">
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q2"><span class="option-letter">A</span><label>Fast-paced with tight deadlines</label></div>
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q2"><span class="option-letter">B</span><label>Structured and predictable</label></div>
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q2"><span class="option-letter">C</span><label>Collaborative team setting</label></div>
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q2"><span class="option-letter">D</span><label>Independent and self-directed</label></div>
+        </div>
+      </div>
+      <div id="question-3" class="hidden">
+        <h2 class="question">What skills are you most interested in developing?</h2>
+        <div class="options">
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q3"><span class="option-letter">A</span><label>Technical and coding skills</label></div>
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q3"><span class="option-letter">B</span><label>Data analysis and interpretation</label></div>
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q3"><span class="option-letter">C</span><label>Creative design and UX</label></div>
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q3"><span class="option-letter">D</span><label>Leadership and management</label></div>
+        </div>
+      </div>
+      <div id="question-4" class="hidden">
+        <h2 class="question">How do you prefer to learn new things?</h2>
+        <div class="options">
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q4"><span class="option-letter">A</span><label>Hands-on practice and experimentation</label></div>
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q4"><span class="option-letter">B</span><label>Researching and reading documentation</label></div>
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q4"><span class="option-letter">C</span><label>Taking structured online courses</label></div>
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q4"><span class="option-letter">D</span><label>Learning from mentors or peers</label></div>
+        </div>
+      </div>
+      <div id="question-5" class="hidden">
+        <h2 class="question">What kind of impact do you want to make in your career?</h2>
+        <div class="options">
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q5"><span class="option-letter">A</span><label>Innovate and create new technologies</label></div>
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q5"><span class="option-letter">B</span><label>Solve complex business problems with data</label></div>
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q5"><span class="option-letter">C</span><label>Improve people's lives through better products</label></div>
+          <div class="option" onclick="selectOption(this)"><input type="radio" name="q5"><span class="option-letter">D</span><label>Lead and inspire a team to achieve a goal</label></div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button id="prev-btn" class="btn btn-secondary hidden">Previous</button>
+        <button id="next-btn" class="btn btn-primary">Next Question</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const progressBar = document.getElementById('progress-bar');
+        const questionCount = document.getElementById('question-count');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const questions = document.querySelectorAll('.question-container > div[id^="question-"]');
+        let currentQuestion = 1;
+        const totalQuestions = questions.length;
+
+        function updateProgress() {
+            progressBar.style.width = `${(currentQuestion / totalQuestions) * 100}%`;
+            questionCount.textContent = `Question ${currentQuestion} of ${totalQuestions}`;
+        }
+
+        function showQuestion(num) {
+            questions.forEach((q, index) => {
+                q.classList.toggle('hidden', index + 1 !== num);
+            });
+            prevBtn.classList.toggle('hidden', num === 1);
+            nextBtn.textContent = (num === totalQuestions) ? 'Submit' : 'Next Question';
+        }
+
+        window.selectOption = function(element) {
+            const parentOptions = element.parentElement.children;
+            for (let opt of parentOptions) {
+                opt.classList.remove('selected');
+            }
+            element.classList.add('selected');
+            element.querySelector('input').checked = true;
+        }
+
+        nextBtn.addEventListener('click', function () {
+            const currentOptions = document.querySelector(`#question-${currentQuestion} .options`);
+            if (!currentOptions.querySelector('input:checked')) {
+                alert('Please select an option.');
+                return;
+            }
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+                updateProgress();
+            } else {
+                window.location.href = 'stage2.html';
+            }
+        });
+
+        prevBtn.addEventListener('click', function () {
+            if (currentQuestion > 1) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+                updateProgress();
+            }
+        });
+
+        updateProgress();
+        showQuestion(1);
+    });
+  </script>
+</body>
+</html>

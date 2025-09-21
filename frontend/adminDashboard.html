@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CareerPulse Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --success: #4cc9f0;
+            --text: #2b2d42;
+            --text-light: #6c757d;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #7209b7 100%);
+            --gradient-accent: linear-gradient(135deg, #f72585 0%, #7209b7 100%);
+            --card-bg: #ffffff;
+            --transition: all 0.3s ease;
+            --border-radius: 16px;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f9fc;
+            color: var(--text);
+        }
+        .sidebar {
+            min-height: 100vh;
+            width: 260px;
+            background: var(--gradient);
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 2px 0 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .sidebar .brand {
+            font-size: 1.6rem; font-weight: 800; padding: 24px; text-align: center;
+            color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .sidebar .brand i {
+            margin-right: 10px; color: var(--accent);
+        }
+        .sidebar .nav-link {
+            color: rgba(255,255,255,0.8); padding: 14px 24px; margin: 4px 16px;
+            font-size: 1rem; font-weight: 500; transition: var(--transition); border-radius: 12px;
+        }
+        .sidebar .nav-link.active, .sidebar .nav-link:hover {
+            background: rgba(255,255,255,0.15); color: #fff;
+        }
+        .main-content {
+            margin-left: 260px;
+            padding: 2rem;
+            transition: margin-left 0.3s;
+        }
+        .stat-card {
+            border: none; border-radius: var(--border-radius); background: var(--card-bg);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.05); transition: var(--transition);
+        }
+        .stat-card:hover {
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1); transform: translateY(-4px);
+        }
+        .data-card {
+            border-radius: var(--border-radius); background: var(--card-bg);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.05); padding: 2rem;
+        }
+        .user-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+
+        @media (max-width: 991.98px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.show { transform: translateX(0); }
+            .main-content { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar d-flex flex-column" id="sidebar">
+        <div class="brand"><i class="fas fa-brain"></i> CareerPulse</div>
+        <ul class="nav flex-column mb-auto px-2">
+            <li class="nav-item"><a class="nav-link active" href="adminDashboard.html"><i class="fas fa-tachometer-alt fa-fw me-2"></i>Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-users fa-fw me-2"></i>Users</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-briefcase fa-fw me-2"></i>Career Paths</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-chart-line fa-fw me-2"></i>Analytics</a></li>
+            <li class="nav-item"><a class="nav-link" href="setting.html"><i class="fas fa-cog fa-fw me-2"></i>Settings</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h2 fw-bold">Dashboard</h1>
+            <button class="btn btn-link d-lg-none" id="sidebarToggle"><i class="fas fa-bars fa-lg"></i></button>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-md-3 col-6"><div class="card stat-card p-4 text-center"><p class="text-muted mb-2">Total Users</p><h3 class="fw-bold h2">5,247</h3></div></div>
+            <div class="col-md-3 col-6"><div class="card stat-card p-4 text-center"><p class="text-muted mb-2">Assessments</p><h3 class="fw-bold h2">3,542</h3></div></div>
+            <div class="col-md-3 col-6"><div class="card stat-card p-4 text-center"><p class="text-muted mb-2">Career Matches</p><h3 class="fw-bold h2">15,896</h3></div></div>
+            <div class="col-md-3 col-6"><div class="card stat-card p-4 text-center"><p class="text-muted mb-2">Completion Rate</p><h3 class="fw-bold h2">78%</h3></div></div>
+        </div>
+        
+        <div class="data-card mb-4">
+            <h4 class="mb-4 fw-bold text-primary">Recent Career Assessments</h4>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr><th>User</th><th>Stream</th><th>Assessment</th><th>Career Match</th><th>Status</th><th>Date</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><div class="d-flex align-items-center"><img src="https://i.pravatar.cc/40?u=1" class="user-avatar me-2" alt="User"><span>Rahul Sharma</span></div></td><td>PCMCs</td><td>Engineering Interest</td><td>AI Engineer</td><td><span class="badge bg-success-subtle text-success-emphasis rounded-pill">Completed</span></td><td>2 hours ago</td></tr>
+                        <tr><td><div class="d-flex align-items-center"><img src="https://i.pravatar.cc/40?u=2" class="user-avatar me-2" alt="User"><span>Priya Patel</span></div></td><td>PCMB</td><td>Medical Field</td><td>Biotechnology</td><td><span class="badge bg-success-subtle text-success-emphasis rounded-pill">Completed</span></td><td>5 hours ago</td></tr>
+                        <tr><td><div class="d-flex align-items-center"><img src="https://i.pravatar.cc/40?u=3" class="user-avatar me-2" alt="User"><span>Anjali Mehta</span></div></td><td>CEBA</td><td>Commerce Assessment</td><td>Financial Analyst</td><td><span class="badge bg-warning-subtle text-warning-emphasis rounded-pill">In Progress</span></td><td>Yesterday</td></tr>
+                        <tr><td><div class="d-flex align-items-center"><img src="https://i.pravatar.cc/40?u=4" class="user-avatar me-2" alt="User"><span>Vikram Singh</span></div></td><td>HEBA</td><td>Humanities Interest</td><td>Digital Marketing</td><td><span class="badge bg-success-subtle text-success-emphasis rounded-pill">Completed</span></td><td>2 days ago</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            document.getElementById('sidebar')?.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

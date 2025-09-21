@@ -1,0 +1,4 @@
+mkdir careerpulse-backend
+cd careerpulse-backend
+npm init -y
+npm install express mysql2 bcryptjs jsonwebtoken axios dotenv

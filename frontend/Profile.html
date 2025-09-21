@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile - CareerPulse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --text: #2b2d42;
+            --text-light: #6c757d;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #7209b7 100%);
+            --card-bg: #ffffff;
+            --body-bg: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--body-bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        /* Standardized Navigation Bar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); position: sticky; top: 0; z-index: 100; margin-bottom: 40px;
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .logo { font-size: 24px; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo i { color: var(--accent); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { text-decoration: none; color: var(--text-light); font-weight: 500; display: flex; align-items: center; gap: 8px; transition: color 0.3s; position: relative; }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-links a.active { color: var(--primary); }
+        .nav-links a.active::after {
+            content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 3px;
+            background: var(--primary); border-radius: 3px;
+        }
+        .user-info-nav { display: flex; align-items: center; gap: 15px; }
+        .level-badge { background: var(--gradient); color: white; padding: 8px 16px; border-radius: 50px; font-weight: 600; font-size: 14px; }
+        
+        /* Profile Header */
+        .profile-header {
+            background: var(--gradient); color: white; padding: 40px; border-radius: 16px;
+            margin-bottom: 30px; display: flex; align-items: center; box-shadow: 0 10px 30px rgba(67, 97, 238, 0.2);
+        }
+        .avatar {
+            width: 120px; height: 120px; border-radius: 50%; background-color: white; display: flex;
+            align-items: center; justify-content: center; margin-right: 30px;
+            font-size: 4rem; color: var(--primary); font-weight: 700; border: 4px solid var(--accent);
+        }
+        .user-info h1 { color: white; margin: 0 0 8px; font-size: 2.5rem; }
+        .user-info p { font-size: 1.2rem; opacity: 0.9; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 30px; }
+        .card {
+            background: var(--card-bg); border-radius: 16px; padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); transition: var(--transition);
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); }
+        .card h3 {
+            font-size: 1.3rem; font-weight: 600; color: var(--primary); margin-bottom: 24px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        
+        /* Info Card */
+        .info-item { margin-bottom: 20px; }
+        .info-label { font-weight: 600; color: var(--text-light); margin-bottom: 5px; font-size: 0.9rem; }
+        .info-value { font-size: 1.1rem; color: var(--text); }
+
+        /* Career Card */
+        .career-card { border-left: 4px solid var(--accent); }
+        .career-path { background: #fff8fa; padding: 20px; border-radius: 12px; margin: 15px 0; border: 1px solid #ffe4ed; }
+        .career-path h4 { color: var(--accent); margin-bottom: 10px; font-size: 1.2rem; }
+        .career-path p { color: var(--text-light); line-height: 1.5; }
+        
+        .skill-interests { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .skill-tag { background: var(--primary); color: white; padding: 8px 16px; border-radius: 50px; font-size: 0.9rem; font-weight: 500; }
+        
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .profile-header { flex-direction: column; text-align: center; }
+            .avatar { margin-right: 0; margin-bottom: 20px; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-brain"></i><span>CareerPulse</span></a>
+            <div class="nav-links">
+                <a href="Dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+                <a href="roadmap.html"><i class="fas fa-road"></i><span>Roadmap</span></a>
+                <a href="CarrerStreak.html"><i class="fas fa-fire"></i><span>Streaks</span></a>
+                <a href="#"><i class="fas fa-briefcase"></i><span>Job Portal</span></a>
+                <a href="Profile.html" class="active"><i class="fas fa-user"></i><span>Profile</span></a>
+            </div>
+            <div class="user-info-nav">
+                <div class="level-badge"><i class="fas fa-trophy"></i><span>Level 3</span></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="profile-header">
+            <div class="avatar">V</div>
+            <div class="user-info">
+                <h1>Vishnu</h1>
+                <p>vishnukumar@gmail.com</p>
+            </div>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-user-circle"></i>Personal Information</h3>
+                <div class="info-item">
+                    <div class="info-label">Full Name</div>
+                    <div class="info-value">Vishnu</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Email</div>
+                    <div class="info-value">vishnukumar@gmail.com</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Age</div>
+                    <div class="info-value">18</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3><i class="fas fa-graduation-cap"></i>Academic Information</h3>
+                <div class="info-item">
+                    <div class="info-label">Current Status</div>
+                    <div class="info-value">12th Grade Student</div>
+                </div>
+                 <div class="info-item">
+                    <div class="info-label">College/Institution</div>
+                    <div class="info-value">Vijaya Vittala Institute of Technology</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Stream & Course</div>
+                    <div class="info-value">Science (PCMB)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid">
+            <div class="card career-card">
+                <h3><i class="fas fa-star"></i>Career Preferences</h3>
+                <div class="career-path">
+                    <h4>Suggested Career Path</h4>
+                    <p>Software Development Engineer</p>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Skill Interests</div>
+                    <div class="skill-interests">
+                        <div class="skill-tag">AI/ML</div>
+                        <div class="skill-tag">Web Development</div>
+                        <div class="skill-tag">Cloud Computing</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

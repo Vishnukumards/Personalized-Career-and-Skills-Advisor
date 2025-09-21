@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Journey - Discover Your Path</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --success: #4cc9f0;
+            --text: #2b2d42;
+            --text-light: #6c757d;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #7209b7 100%);
+            --card-bg: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 650px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .header {
+            padding: 32px 25px;
+            background: var(--gradient);
+            color: white;
+        }
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .content {
+            padding: 32px;
+        }
+        .intro-text h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .intro-text p {
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+        .stages-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 32px 0;
+        }
+        .stage {
+            display: flex;
+            align-items: center;
+            text-align: left;
+            background: #f8f9fa;
+            border: 1px solid #eef2ff;
+            border-radius: 12px;
+            padding: 16px;
+            transition: var(--transition);
+        }
+        .stage:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        .stage-number {
+            background: var(--gradient);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+        .stage-content h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .stage-content p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(106, 17, 203, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to Your Career Journey</h1>
+            <p>A simple, 5-stage guided process to discover and start your ideal career path.</p>
+        </div>
+        <div class="content">
+            <div class="intro-text">
+                <h2>Find Your Perfect Career Match</h2>
+                <p>Our intelligent system will guide you through a simple process to identify careers that align with your skills, interests, and goals.</p>
+            </div>
+            <div class="stages-container">
+                <div class="stage">
+                    <div class="stage-number">1</div>
+                    <div class="stage-content">
+                        <h3>Quick Questions About You</h3>
+                        <p>A brief assessment of your interests, skills, and preferences.</p>
+                    </div>
+                </div>
+                <div class="stage">
+                    <div class="stage-number">2</div>
+                    <div class="stage-content">
+                        <h3>AI Suggested Matches</h3>
+                        <p>Our algorithm suggests career paths perfectly aligned with your profile.</p>
+                    </div>
+                </div>
+                <div class="stage">
+                    <div class="stage-number">3</div>
+                    <div class="stage-content">
+                        <h3>Accept or Reject Suggestions</h3>
+                        <p>Review and indicate which career suggestions interest you most.</p>
+                    </div>
+                </div>
+                <div class="stage">
+                    <div class="stage-number">4</div>
+                    <div class="stage-content">
+                        <h3>Explore Recommended Roles</h3>
+                        <p>Explore details about your chosen path or input your own career ideas.</p>
+                    </div>
+                </div>
+                <div class="stage">
+                    <div class="stage-number">5</div>
+                    <div class="stage-content">
+                        <h3>Start Your Journey</h3>
+                        <p>Get comprehensive information and begin your personalized action plan.</p>
+                    </div>
+                </div>
+            </div>
+            <a href="stage1.html" class="btn">Begin Your Career Journey <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+        </div>
+    </div>
+</body>
+</html>

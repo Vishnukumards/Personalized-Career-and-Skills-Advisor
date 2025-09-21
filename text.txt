@@ -1,0 +1,27 @@
+USer Signup inputs:
+
+1.12th PUC
+Name
+Email
+12th Grade/PUC College
+Stream
+Password
+Skills Interested
+
+2.Engineering Student
+Name
+Email
+Engineering College
+Branch
+Year of Study
+Password
+Skills Interested
+
+3.Graduate
+Full Name
+Email
+College/Institute Name
+Degree
+Passout Year
+Password
+Skills Interested
