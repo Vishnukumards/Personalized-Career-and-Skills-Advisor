@@ -1,0 +1,1 @@
+CareerPulse (Gen AI Exchange Hackathon Project)– An AI-powered career and skills advisor that helps students and graduates discover their ideal career path, analyze their skills and interests, and build a personalized learning roadmap to achieve their goals.
